@@ -178,8 +178,6 @@ public class HystrixSampleSseServletTest {
         }
 
         @Override
-        protected void decrementCurrentConcurrentConnections() {
-            concurrentConnections.decrementAndGet();
-        }
+        protected void decrementCurrentConcurrentConnections() 
     }
 }

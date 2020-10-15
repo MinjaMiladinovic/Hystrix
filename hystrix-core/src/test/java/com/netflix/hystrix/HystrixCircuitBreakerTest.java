@@ -827,7 +827,7 @@ public class HystrixCircuitBreakerTest {
                     + commandInfo.isCircuitBreakerOpen() + " "
                     + metrics.getHealthCounts().getErrorCount() + " "
                     + metrics.getHealthCounts().getErrorPercentage() + " "
-                    + metrics.getHealthCounts().getTotalRequests() + "  => " + response + "  " + commandInfo.getExecutionEvents());
+ 
             }
         }
     }

@@ -118,6 +118,20 @@ public class HystrixThreadPoolTest {
         //assert that both HystrixThreadPools share the same ThreadPoolExecutor as the one in HystrixMetricsPublisherThreadPool
         assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
         assertFalse(threadPoolExecutor.isShutdown());
+        assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
+        assertFalse(threadPoolExecutor.isShutdown());
+        assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
+        assertFalse(threadPoolExecutor.isShutdown());
+        assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
+        assertFalse(threadPoolExecutor.isShutdown());
+        assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
+        assertFalse(threadPoolExecutor.isShutdown());
+        assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
+        assertFalse(threadPoolExecutor.isShutdown());
+        assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
+        assertFalse(threadPoolExecutor.isShutdown());
+        assertTrue(threadPoolExecutor.equals(poolOne.getExecutor()) && threadPoolExecutor.equals(poolTwo.getExecutor()));
+        assertFalse(threadPoolExecutor.isShutdown());
 
         //Now the HystrixThreadPool ALWAYS has the same reference to the ThreadPoolExecutor so that it no longer matters which
         //wins to be inserted into the HystrixThreadPool.Factory.threadPools cache.
@@ -131,6 +145,14 @@ public class HystrixThreadPoolTest {
         
         final AtomicBoolean interrupted = new AtomicBoolean();
         final CountDownLatch start = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
+        final CountDownLatch end = new CountDownLatch(1);
         final CountDownLatch end = new CountDownLatch(1);
 
         HystrixContextScheduler hcs = new HystrixContextScheduler(HystrixPlugins.getInstance().getConcurrencyStrategy(), pool);

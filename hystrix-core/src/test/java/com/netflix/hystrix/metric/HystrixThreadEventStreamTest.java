@@ -47,6 +47,114 @@ public class HystrixThreadEventStreamTest {
         readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
     }
 
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
+    public HystrixThreadEventStreamTest() {
+        commandKey = HystrixCommandKey.Factory.asKey("CMD-ThreadStream");
+        threadPoolKey = HystrixThreadPoolKey.Factory.asKey("TP-ThreadStream");
+
+        writeToStream = HystrixThreadEventStream.getInstance();
+        readCommandStream = HystrixCommandCompletionStream.getInstance(commandKey);
+        readThreadPoolStream = HystrixThreadPoolCompletionStream.getInstance(threadPoolKey);
+    }
+
     private <T> Subscriber<T> getLatchedSubscriber(final CountDownLatch latch) {
         return new Subscriber<T>() {
             @Override

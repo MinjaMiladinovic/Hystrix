@@ -158,5 +158,385 @@ public class HystrixSubclassCommandTest {
         protected Integer getFallback() {
             return 3;
         }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
+
+        @Override
+        protected Integer getFallback() {
+            return 3;
+        }
     }
 }

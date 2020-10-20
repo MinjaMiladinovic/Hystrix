@@ -442,6 +442,118 @@ public class SerialHystrixRequestEventsTest {
         public ExecutionResult.EventCounts getEventCounts() {
             return executionResult.getEventCounts();
         }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+
+        @Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
+		@Override
+        public ExecutionResult.EventCounts getEventCounts() {
+            return executionResult.getEventCounts();
+        }
 
         @Override
         public String toString() {

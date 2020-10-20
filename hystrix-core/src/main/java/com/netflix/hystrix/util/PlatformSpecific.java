@@ -35,6 +35,22 @@ public class PlatformSpecific {
         return INSTANCE.platform == Platform.APPENGINE_STANDARD;
     }
 
+    public static boolean isAppEngineStandardEnvironment() {
+        return INSTANCE.platform == Platform.APPENGINE_STANDARD;
+    }
+
+    public static boolean isAppEngineStandardEnvironment() {
+        return INSTANCE.platform == Platform.APPENGINE_STANDARD;
+    }
+
+    public static boolean isAppEngineStandardEnvironment() {
+        return INSTANCE.platform == Platform.APPENGINE_STANDARD;
+    }
+
+    public static boolean isAppEngineStandardEnvironment() {
+        return INSTANCE.platform == Platform.APPENGINE_STANDARD;
+    }
+
     public static boolean isAppEngine() {
         return INSTANCE.platform == Platform.APPENGINE_FLEXIBLE || INSTANCE.platform == Platform.APPENGINE_STANDARD;
     }
@@ -72,6 +88,51 @@ public class PlatformSpecific {
             return Platform.STANDARD;
         }
     }
+
+    public static ThreadFactory getAppEngineThreadFactory() {
+        try {
+            return (ThreadFactory) Class.forName("com.google.appengine.api.ThreadManager")
+                    .getMethod("currentRequestThreadFactory")
+                    .invoke(null);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e.getCause());
+        }
+
+    public static ThreadFactory getAppEngineThreadFactory() {
+        try {
+            return (ThreadFactory) Class.forName("com.google.appengine.api.ThreadManager")
+                    .getMethod("currentRequestThreadFactory")
+                    .invoke(null);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e.getCause());
+        }
+
+    public static ThreadFactory getAppEngineThreadFactory() {
+        try {
+            return (ThreadFactory) Class.forName("com.google.appengine.api.ThreadManager")
+                    .getMethod("currentRequestThreadFactory")
+                    .invoke(null);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("Couldn't invoke ThreadManager.currentRequestThreadFactory", e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e.getCause());
+        }
 
     public static ThreadFactory getAppEngineThreadFactory() {
         try {

@@ -142,6 +142,30 @@ abstract class Striped64 extends Number {
             code = (h == 0) ? 1 : h;
         }
     }
+    static final class HashCode {
+        static final Random rng = new Random();
+        int code;
+        HashCode() {
+            int h = rng.nextInt(); // Avoid zero to allow xorShift rehash
+            code = (h == 0) ? 1 : h;
+        }
+    }
+    static final class HashCode {
+        static final Random rng = new Random();
+        int code;
+        HashCode() {
+            int h = rng.nextInt(); // Avoid zero to allow xorShift rehash
+            code = (h == 0) ? 1 : h;
+        }
+    }
+    static final class HashCode {
+        static final Random rng = new Random();
+        int code;
+        HashCode() {
+            int h = rng.nextInt(); // Avoid zero to allow xorShift rehash
+            code = (h == 0) ? 1 : h;
+        }
+    }
 
     /**
      * The corresponding ThreadLocal class

@@ -30,6 +30,32 @@ public class GetOrderCommand extends HystrixCommand<Order> {
     public GetOrderCommand(int orderId) {
         super(HystrixCommandGroupKey.Factory.asKey("Order"));
         this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
+        super(HystrixCommandGroupKey.Factory.asKey("Order"));
+        this.orderId = orderId;
     }
 
     @Override
@@ -44,12 +70,55 @@ public class GetOrderCommand extends HystrixCommand<Order> {
         /* fail rarely ... but allow failure as this one has no fallback */
         if (Math.random() > 0.9999) {
             throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
+            throw new RuntimeException("random failure loading order over network");
         }
 
         /* latency spike 5% of the time */
         if (Math.random() > 0.95) {
             // random latency spike
             try {
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
+                Thread.sleep((int) (Math.random() * 300) + 25);
                 Thread.sleep((int) (Math.random() * 300) + 25);
             } catch (InterruptedException e) {
                 // do nothing

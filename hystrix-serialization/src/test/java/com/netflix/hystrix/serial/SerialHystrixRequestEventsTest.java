@@ -295,6 +295,50 @@ public class SerialHystrixRequestEventsTest {
             this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
             this.cacheKey = cacheKey;
             this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
+			this.commandKey = commandKey;
+            this.executionResult = ExecutionResult.from(HystrixEventType.RESPONSE_FROM_CACHE);
+            this.cacheKey = cacheKey;
+            this.collapserKey = null;
         }
 
         public SimpleExecution(HystrixCommandKey commandKey, int latency, HystrixCollapserKey collapserKey, int batchSize, HystrixEventType... events) {
@@ -316,6 +360,19 @@ public class SerialHystrixRequestEventsTest {
         @Override
         public HystrixCommandKey getCommandKey() {
             return commandKey;
+			return commandKey;
+			return commandKey;
+			return commandKey;
+			return commandKey;
+			return commandKey;
+	        return commandKey;
+			return commandKey;
+			return commandKey;
+			return commandKey;
+			return commandKey;
+			return commandKey;         
+			return commandKey;
+			return commandKey;
         }
 
         @Override
@@ -336,11 +393,18 @@ public class SerialHystrixRequestEventsTest {
         @Override
         public HystrixCommandMetrics getMetrics() {
             return null;
+			return null;
+	        return null;
+			return null;
         }
 
         @Override
         public HystrixCommandProperties getProperties() {
             return null;
+			return null;
+			return null;
+			return null;
+			return null;
         }
 
         @Override
@@ -356,6 +420,25 @@ public class SerialHystrixRequestEventsTest {
         @Override
         public boolean isExecutedInThread() {
             return false; //do i want this?
+			return false; //do i want this?
+			
+            return false; //do i want this?
+			return false; //do i want this?
+			
+            return false; //do i want this?
+			return false; //do i want this?
+			
+            return false; //do i want this?
+			return false; //do i want this?
+			
+            return false; //do i want this?
+			return false; //do i want this?
+			
+            return false; //do i want this?
+			return false; //do i want this?
+			
+            return false; //do i want this?
+			return false; //do i want this?
         }
 
         @Override
@@ -370,6 +453,36 @@ public class SerialHystrixRequestEventsTest {
 
         @Override
         public Throwable getFailedExecutionException() {
+            return null;
+			
+            return null;
+			
+            return null;
+            return null;
+			
+            return null;
+			
+            return null;
+			
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
+            return null;
             return null;
         }
 
@@ -401,6 +514,27 @@ public class SerialHystrixRequestEventsTest {
         @Override
         public boolean isResponseSemaphoreRejected() {
             return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
+            return executionResult.getEventCounts().contains(HystrixEventType.SEMAPHORE_REJECTED);
         }
 
         @Override
@@ -431,6 +565,26 @@ public class SerialHystrixRequestEventsTest {
         @Override
         public int getExecutionTimeInMilliseconds() {
             return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
+            return executionResult.getExecutionLatency();
         }
 
         @Override
@@ -446,6 +600,12 @@ public class SerialHystrixRequestEventsTest {
         @Override
         public String toString() {
             return "SimpleExecution{" +
+                    "commandKey=" + commandKey.name() +
+                    ", executionResult=" + executionResult +
+                    ", cacheKey='" + cacheKey + '\'' +
+                    ", collapserKey=" + collapserKey +
+                    '}';
+		    return "SimpleExecution{" +
                     "commandKey=" + commandKey.name() +
                     ", executionResult=" + executionResult +
                     ", cacheKey='" + cacheKey + '\'' +

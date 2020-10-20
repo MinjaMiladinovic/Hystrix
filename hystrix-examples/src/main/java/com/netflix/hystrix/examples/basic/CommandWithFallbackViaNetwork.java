@@ -69,6 +69,230 @@ public class CommandWithFallbackViaNetwork extends HystrixCommand<String> {
                     // fallbacks from executing
                     .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
             this.id = id;
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
+                    .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueFallbackCommand"))
+                    // use a different threadpool for the fallback command
+                    // so saturating the RemoteServiceX pool won't prevent
+                    // fallbacks from executing
+                    .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("RemoteServiceXFallback")));
+            this.id = id;
+        }
         }
 
         @Override
@@ -92,6 +316,303 @@ public class CommandWithFallbackViaNetwork extends HystrixCommand<String> {
         public void test() {
             HystrixRequestContext context = HystrixRequestContext.initializeContext();
             try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
                 assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
 
                 HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];

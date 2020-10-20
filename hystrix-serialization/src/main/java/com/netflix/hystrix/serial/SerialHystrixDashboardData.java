@@ -50,6 +50,26 @@ public class SerialHystrixDashboardData extends SerialHystrixMetric {
         try {
             JsonGenerator json = jsonFactory.createGenerator(jsonString);
             writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+            writeDashboardData(json, dashboardData);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -81,9 +101,43 @@ public class SerialHystrixDashboardData extends SerialHystrixMetric {
 
             for (HystrixCommandMetrics commandMetrics : dashboardData.getCommandMetrics()) {
                 writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
+                writeCommandMetrics(commandMetrics, json);
             }
 
             for (HystrixThreadPoolMetrics threadPoolMetrics : dashboardData.getThreadPoolMetrics()) {
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
+                writeThreadPoolMetrics(threadPoolMetrics, json);
                 writeThreadPoolMetrics(threadPoolMetrics, json);
             }
 

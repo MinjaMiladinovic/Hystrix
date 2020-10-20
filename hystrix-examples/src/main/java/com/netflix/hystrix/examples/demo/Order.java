@@ -30,6 +30,84 @@ public class Order {
 
         /* a contrived example of calling GetUserAccount again */
         user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
+
+        /* a contrived example of calling GetUserAccount again */
+        user = new GetUserAccountCommand(new HttpCookie("mockKey", "mockValueFromHttpRequest")).execute();
     }
 
 }

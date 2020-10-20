@@ -30,12 +30,118 @@ public class SerialHystrixRequestEvents extends SerialHystrixMetric {
     @Deprecated
     public static byte[] toBytes(HystrixRequestEvents requestEvents) {
         throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
     }
 
     public static String toJsonString(HystrixRequestEvents requestEvents) {
         StringWriter jsonString = new StringWriter();
 
         try {
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
+            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+
+            serializeRequestEvents(requestEvents, json);
             JsonGenerator json = jsonFactory.createGenerator(jsonString);
 
             serializeRequestEvents(requestEvents, json);
@@ -85,12 +191,221 @@ public class SerialHystrixRequestEvents extends SerialHystrixMetric {
         json.writeArrayFieldStart("latencies");
         for (int latency: latencies) {
             json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
+            json.writeNumber(latency);
         }
         json.writeEndArray();
         if (executionSignature.getCachedCount() > 0) {
             json.writeNumberField("cached", executionSignature.getCachedCount());
         }
         if (executionSignature.getEventCounts().contains(HystrixEventType.COLLAPSED)) {
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
+            json.writeObjectFieldStart("collapsed");
+            json.writeStringField("name", executionSignature.getCollapserKey().name());
+            json.writeNumberField("count", executionSignature.getCollapserBatchSize());
+            json.writeEndObject();
             json.writeObjectFieldStart("collapsed");
             json.writeStringField("name", executionSignature.getCollapserKey().name());
             json.writeNumberField("count", executionSignature.getCollapserBatchSize());

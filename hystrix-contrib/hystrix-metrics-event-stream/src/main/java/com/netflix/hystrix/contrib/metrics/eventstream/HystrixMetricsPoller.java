@@ -521,6 +521,7 @@ public class HystrixMetricsPoller {
             Thread thread = defaultFactory.newThread(r);
             thread.setName(MetricsThreadName);
             thread.setDaemon(true);
+            thread.setDaemon(true);
             return thread;
         }
     }

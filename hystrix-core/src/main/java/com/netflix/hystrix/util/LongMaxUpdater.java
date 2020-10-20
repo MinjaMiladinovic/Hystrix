@@ -138,7 +138,7 @@ public class LongMaxUpdater extends Striped64 implements Serializable {
                     long v = a.value;
                     a.value = Long.MIN_VALUE;
                     if (v > max)
-                        max = v;
+                  
                 }
             }
         }

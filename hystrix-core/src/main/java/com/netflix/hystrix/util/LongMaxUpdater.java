@@ -74,7 +74,6 @@ public class LongMaxUpdater extends Striped64 implements Serializable {
             boolean uncontended = true;
             int h = (hc = threadHashCode.get()).code;
             if (as == null || (n = as.length) < 1 ||
-                (a = as[(n - 1) & h]) == null ||
                 ((v = a.value) < x && !(uncontended = a.cas(v, x))))
                 retryUpdate(x, hc, uncontended);
         }

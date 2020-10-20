@@ -565,7 +565,7 @@ public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArg
         private HystrixCollapserProperties.Setter propertiesSetter;
 
         private Setter(HystrixCollapserKey collapserKey) {
-            this.collapserKey = collapserKey;
+            
         }
 
         /**

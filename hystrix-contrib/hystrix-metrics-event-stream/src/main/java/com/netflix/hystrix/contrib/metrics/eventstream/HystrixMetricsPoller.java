@@ -1,527 +1,671 @@
-/**
- * Copyright 2012 Netflix, Inc.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package com.netflix.hystrix.contrib.metrics.eventstream;
-
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.netflix.hystrix.HystrixCircuitBreaker;
-import com.netflix.hystrix.HystrixCollapserKey;
-import com.netflix.hystrix.HystrixCollapserMetrics;
-import com.netflix.hystrix.HystrixCommandKey;
-import com.netflix.hystrix.HystrixCommandMetrics;
-import com.netflix.hystrix.HystrixCommandMetrics.HealthCounts;
-import com.netflix.hystrix.HystrixCommandProperties;
-import com.netflix.hystrix.HystrixEventType;
-import com.netflix.hystrix.HystrixThreadPoolKey;
-import com.netflix.hystrix.HystrixThreadPoolMetrics;
-import com.netflix.hystrix.util.PlatformSpecific;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import rx.functions.Func0;
+package org.apache.zookeeper.server;
 
 import java.io.IOException;
-import java.io.StringWriter;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import org.apache.commons.lang.StringUtils;
+import org.apache.jute.Record;
+import org.apache.zookeeper.ClientCnxn;
+import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.KeeperException.Code;
+import org.apache.zookeeper.KeeperException.SessionMovedException;
+import org.apache.zookeeper.MultiOperationRecord;
+import org.apache.zookeeper.MultiResponse;
+import org.apache.zookeeper.Op;
+import org.apache.zookeeper.OpResult;
+import org.apache.zookeeper.OpResult.CheckResult;
+import org.apache.zookeeper.OpResult.CreateResult;
+import org.apache.zookeeper.OpResult.DeleteResult;
+import org.apache.zookeeper.OpResult.ErrorResult;
+import org.apache.zookeeper.OpResult.GetChildrenResult;
+import org.apache.zookeeper.OpResult.GetDataResult;
+import org.apache.zookeeper.OpResult.SetDataResult;
+import org.apache.zookeeper.Watcher.WatcherType;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.ZooDefs.OpCode;
+import org.apache.zookeeper.audit.AuditHelper;
+import org.apache.zookeeper.common.Time;
+import org.apache.zookeeper.data.ACL;
+import org.apache.zookeeper.data.Id;
+import org.apache.zookeeper.data.Stat;
+import org.apache.zookeeper.proto.AddWatchRequest;
+import org.apache.zookeeper.proto.CheckWatchesRequest;
+import org.apache.zookeeper.proto.Create2Response;
+import org.apache.zookeeper.proto.CreateResponse;
+import org.apache.zookeeper.proto.ErrorResponse;
+import org.apache.zookeeper.proto.ExistsRequest;
+import org.apache.zookeeper.proto.ExistsResponse;
+import org.apache.zookeeper.proto.GetACLRequest;
+import org.apache.zookeeper.proto.GetACLResponse;
+import org.apache.zookeeper.proto.GetAllChildrenNumberRequest;
+import org.apache.zookeeper.proto.GetAllChildrenNumberResponse;
+import org.apache.zookeeper.proto.GetChildren2Request;
+import org.apache.zookeeper.proto.GetChildren2Response;
+import org.apache.zookeeper.proto.GetChildrenRequest;
+import org.apache.zookeeper.proto.GetChildrenResponse;
+import org.apache.zookeeper.proto.GetDataRequest;
+import org.apache.zookeeper.proto.GetDataResponse;
+import org.apache.zookeeper.proto.GetEphemeralsRequest;
+import org.apache.zookeeper.proto.GetEphemeralsResponse;
+import org.apache.zookeeper.proto.RemoveWatchesRequest;
+import org.apache.zookeeper.proto.ReplyHeader;
+import org.apache.zookeeper.proto.SetACLResponse;
+import org.apache.zookeeper.proto.SetDataResponse;
+import org.apache.zookeeper.proto.SetWatches;
+import org.apache.zookeeper.proto.SetWatches2;
+import org.apache.zookeeper.proto.SyncRequest;
+import org.apache.zookeeper.proto.SyncResponse;
+import org.apache.zookeeper.server.DataTree.ProcessTxnResult;
+import org.apache.zookeeper.server.quorum.QuorumZooKeeperServer;
+import org.apache.zookeeper.server.util.RequestPathMetricsCollector;
+import org.apache.zookeeper.txn.ErrorTxn;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Polls Hystrix metrics and output JSON strings for each metric to a MetricsPollerListener.
- * <p>
- * Polling can be stopped/started. Use shutdown() to permanently shutdown the poller.
+ * This Request processor actually applies any transaction associated with a
+ * request and services any queries. It is always at the end of a
+ * RequestProcessor chain (hence the name), so it does not have a nextProcessor
+ * member.
  *
- * An implementation note.  If there's a version mismatch between hystrix-core and hystrix-metrics-event-stream,
- * the code below may reference a HystrixEventType that does not exist in hystrix-core.  If this happens,
- * a j.l.NoSuchFieldError occurs.  Since this data is not being generated by hystrix-core, it's safe to count it as 0
- * and we should log an error to get users to update their dependency set.
- *
- * @deprecated Prefer {@link com.netflix.hystrix.metric.consumer.HystrixDashboardStream}
+ * This RequestProcessor counts on ZooKeeperServer to populate the
+ * outstandingRequests member of ZooKeeperServer.
  */
-@Deprecated //since 1.5.4
-public class HystrixMetricsPoller {
+public class FinalRequestProcessor implements RequestProcessor {
 
-    static final Logger logger = LoggerFactory.getLogger(HystrixMetricsPoller.class);
-    private final ScheduledExecutorService executor;
-    private final int delay;
-    private final AtomicBoolean running = new AtomicBoolean(false);
-    private volatile ScheduledFuture<?> scheduledTask = null;
-    private final MetricsAsJsonPollerListener listener;
+    private static final Logger LOG = LoggerFactory.getLogger(FinalRequestProcessor.class);
 
-    /**
-     * Allocate resources to begin polling.
-     * <p>
-     * Use <code>start</code> to begin polling.
-     * <p>
-     * Use <code>shutdown</code> to cleanup resources and stop polling.
-     * <p>
-     * Use <code>pause</code> to temporarily stop polling that can be restarted again with <code>start</code>.
-     * 
-     * @param listener for callbacks
-     * @param delay
-     */
-    public HystrixMetricsPoller(MetricsAsJsonPollerListener listener, int delay) {
-        this.listener = listener;
+    private final RequestPathMetricsCollector requestPathMetricsCollector;
 
-        ThreadFactory threadFactory = null;
-        if (!PlatformSpecific.isAppEngineStandardEnvironment()) {
-            threadFactory = new MetricsPollerThreadFactory();
-        } else {
-            threadFactory = PlatformSpecific.getAppEngineThreadFactory();
-        }
+    ZooKeeperServer zks;
 
-        executor = new ScheduledThreadPoolExecutor(1, threadFactory);
-        this.delay = delay;
+    public FinalRequestProcessor(ZooKeeperServer zks) {
+        this.zks = zks;
+        this.requestPathMetricsCollector = zks.getRequestPathMetricsCollector();
     }
 
-    /**
-     * Start polling.
-     */
-    public synchronized void start() {
-        // use compareAndSet to make sure it starts only once and when not running
-        if (running.compareAndSet(false, true)) {
-            logger.debug("Starting HystrixMetricsPoller");
-            try {
-                scheduledTask = executor.scheduleWithFixedDelay(new MetricsPoller(listener), 0, delay, TimeUnit.MILLISECONDS);
-            } catch (Throwable ex) {
-                logger.error("Exception while creating the MetricsPoller task");
-                ex.printStackTrace();
-                running.set(false);
+    private ProcessTxnResult applyRequest(Request request) {
+        ProcessTxnResult rc = zks.processTxn(request);
+
+        // ZOOKEEPER-558:
+        // In some cases the server does not close the connection (e.g., closeconn buffer
+        // was not being queued — ZOOKEEPER-558) properly. This happens, for example,
+        // when the client closes the connection. The server should still close the session, though.
+        // Calling closeSession() after losing the cnxn, results in the client close session response being dropped.
+        if (request.type == OpCode.closeSession && connClosedByClient(request)) {
+            // We need to check if we can close the session id.
+            // Sometimes the corresponding ServerCnxnFactory could be null because
+            // we are just playing diffs from the leader.
+            if (closeSession(zks.serverCnxnFactory, request.sessionId)
+                || closeSession(zks.secureServerCnxnFactory, request.sessionId)) {
+                return rc;
             }
         }
-    }
 
-    /**
-     * Pause (stop) polling. Polling can be started again with <code>start</code> as long as <code>shutdown</code> is not called.
-     */
-    public synchronized void pause() {
-        // use compareAndSet to make sure it stops only once and when running
-        if (running.compareAndSet(true, false)) {
-            logger.debug("Stopping the HystrixMetricsPoller");
-            scheduledTask.cancel(true);
-        } else {
-            logger.debug("Attempted to pause a stopped poller");
+        if (request.getHdr() != null) {
+            /*
+             * Request header is created only by the leader, so this must be
+             * a quorum request. Since we're comparing timestamps across hosts,
+             * this metric may be incorrect. However, it's still a very useful
+             * metric to track in the happy case. If there is clock drift,
+             * the latency can go negative. Note: headers use wall time, not
+             * CLOCK_MONOTONIC.
+             */
+            long propagationLatency = Time.currentWallTime() - request.getHdr().getTime();
+            if (propagationLatency >= 0) {
+                ServerMetrics.getMetrics().PROPAGATION_LATENCY.add(propagationLatency);
+            }
         }
+
+        return rc;
     }
 
-    /**
-     * Stops polling and shuts down the ExecutorService.
-     * <p>
-     * This instance can no longer be used after calling shutdown.
-     */
-    public synchronized void shutdown() {
-        pause();
-        executor.shutdown();
-    }
+    public void processRequest(Request request) {
+        LOG.debug("Processing request:: {}", request);
 
-    public boolean isRunning() {
-        return running.get();
-    }
+        if (LOG.isTraceEnabled()) {
+            long traceMask = ZooTrace.CLIENT_REQUEST_TRACE_MASK;
+            if (request.type == OpCode.ping) {
+                traceMask = ZooTrace.SERVER_PING_TRACE_MASK;
+            }
+            ZooTrace.logRequest(LOG, traceMask, 'E', request, "");
+        }
+        ProcessTxnResult rc = null;
+        if (!request.isThrottled()) {
+          rc = applyRequest(request);
+        }
+        if (request.cnxn == null) {
+            return;
+        }
+        ServerCnxn cnxn = request.cnxn;
 
-    /**
-     * Used to protect against leaking ExecutorServices and threads if this class is abandoned for GC without shutting down.
-     */
-    @SuppressWarnings("unused")
-    private final Object finalizerGuardian = new Object() {
-        protected void finalize() throws Throwable {
-            if (!executor.isShutdown()) {
-                logger.warn("{} was not shutdown. Caught in Finalize Guardian and shutting down.", HystrixMetricsPoller.class.getSimpleName());
-                try {
-                    shutdown();
-                } catch (Exception e) {
-                    logger.error("Failed to shutdown {}", HystrixMetricsPoller.class.getSimpleName(), e);
+        long lastZxid = zks.getZKDatabase().getDataTreeLastProcessedZxid();
+
+        String lastOp = "NA";
+        // Notify ZooKeeperServer that the request has finished so that it can
+        // update any request accounting/throttling limits
+        zks.decInProcess();
+        zks.requestFinished(request);
+        Code err = Code.OK;
+        Record rsp = null;
+        String path = null;
+        int responseSize = 0;
+        try {
+            if (request.getHdr() != null && request.getHdr().getType() == OpCode.error) {
+                AuditHelper.addAuditLog(request, rc, true);
+                /*
+                 * When local session upgrading is disabled, leader will
+                 * reject the ephemeral node creation due to session expire.
+                 * However, if this is the follower that issue the request,
+                 * it will have the correct error code, so we should use that
+                 * and report to user
+                 */
+                if (request.getException() != null) {
+                    throw request.getException();
+                } else {
+                    throw KeeperException.create(KeeperException.Code.get(((ErrorTxn) request.getTxn()).getErr()));
                 }
             }
-        };
-    };
 
-    public static interface MetricsAsJsonPollerListener {
-        public void handleJsonMetric(String json);
-    }
+            KeeperException ke = request.getException();
+            if (ke instanceof SessionMovedException) {
+                throw ke;
+            }
+            if (ke != null && request.type != OpCode.multi) {
+                throw ke;
+            }
 
-    private class MetricsPoller implements Runnable {
+            LOG.debug("{}", request);
 
-        private final MetricsAsJsonPollerListener listener;
-        private final JsonFactory jsonFactory = new JsonFactory();
+            if (request.isStale()) {
+                ServerMetrics.getMetrics().STALE_REPLIES.add(1);
+            }
 
-        public MetricsPoller(MetricsAsJsonPollerListener listener) {
-            this.listener = listener;
-        }
+            if (request.isThrottled()) {
+              throw KeeperException.create(Code.THROTTLEDOP);
+            }
 
-        @Override
-        public void run() {
-            try {
-                for (HystrixCommandMetrics commandMetrics : HystrixCommandMetrics.getInstances()) {
-                    String jsonString = getCommandJson(commandMetrics);
-                    listener.handleJsonMetric(jsonString);
-                }
+            AuditHelper.addAuditLog(request, rc);
 
-                for (HystrixThreadPoolMetrics threadPoolMetrics : HystrixThreadPoolMetrics.getInstances()) {
-                    if (hasExecutedCommandsOnThread(threadPoolMetrics)) {
-                        String jsonString = getThreadPoolJson(threadPoolMetrics);
-                        listener.handleJsonMetric(jsonString);
-                    }
-                }
+            switch (request.type) {
+            case OpCode.ping: {
+                lastOp = "PING";
+                updateStats(request, lastOp, lastZxid);
 
-                for (HystrixCollapserMetrics collapserMetrics : HystrixCollapserMetrics.getInstances()) {
-                    String jsonString = getCollapserJson(collapserMetrics);
-                    listener.handleJsonMetric(jsonString);
-                }
-
-            } catch (Exception e) {
-                logger.warn("Failed to output metrics as JSON", e);
-                // shutdown
-                pause();
+                responseSize = cnxn.sendResponse(new ReplyHeader(ClientCnxn.PING_XID, lastZxid, 0), null, "response");
                 return;
             }
-        }
+            case OpCode.createSession: {
+                lastOp = "SESS";
+                updateStats(request, lastOp, lastZxid);
 
-        private void safelyWriteNumberField(JsonGenerator json, String name, Func0<Long> metricGenerator) throws IOException {
-            try {
-                json.writeNumberField(name, metricGenerator.call());
-            } catch (NoSuchFieldError error) {
-                logger.error("While publishing Hystrix metrics stream, error looking up eventType for : {}.  Please check that all Hystrix versions are the same!", name);
-                json.writeNumberField(name, 0L);
+                zks.finishSessionInit(request.cnxn, true);
+                return;
             }
+            case OpCode.multi: {
+                lastOp = "MULT";
+                rsp = new MultiResponse();
+
+                for (ProcessTxnResult subTxnResult : rc.multiResult) {
+
+                    OpResult subResult;
+
+                    switch (subTxnResult.type) {
+                    case OpCode.check:
+                        subResult = new CheckResult();
+                        break;
+                    case OpCode.create:
+                        subResult = new CreateResult(subTxnResult.path);
+                        break;
+                    case OpCode.create2:
+                    case OpCode.createTTL:
+                    case OpCode.createContainer:
+                        subResult = new CreateResult(subTxnResult.path, subTxnResult.stat);
+                        break;
+                    case OpCode.delete:
+                    case OpCode.deleteContainer:
+                        subResult = new DeleteResult();
+                        break;
+                    case OpCode.setData:
+                        subResult = new SetDataResult(subTxnResult.stat);
+                        break;
+                    case OpCode.error:
+                        subResult = new ErrorResult(subTxnResult.err);
+                        if (subTxnResult.err == Code.SESSIONMOVED.intValue()) {
+                            throw new SessionMovedException();
+                        }
+                        break;
+                    default:
+                        throw new IOException("Invalid type of op");
+                    }
+
+                    ((MultiResponse) rsp).add(subResult);
+                }
+
+                break;
+            }
+            case OpCode.multiRead: {
+                lastOp = "MLTR";
+                MultiOperationRecord multiReadRecord = new MultiOperationRecord();
+                ByteBufferInputStream.byteBuffer2Record(request.request, multiReadRecord);
+                rsp = new MultiResponse();
+                OpResult subResult;
+                for (Op readOp : multiReadRecord) {
+                    try {
+                        Record rec;
+                        switch (readOp.getType()) {
+                        case OpCode.getChildren:
+                            rec = handleGetChildrenRequest(readOp.toRequestRecord(), cnxn, request.authInfo);
+                            subResult = new GetChildrenResult(((GetChildrenResponse) rec).getChildren());
+                            break;
+                        case OpCode.getData:
+                            rec = handleGetDataRequest(readOp.toRequestRecord(), cnxn, request.authInfo);
+                            GetDataResponse gdr = (GetDataResponse) rec;
+                            subResult = new GetDataResult(gdr.getData(), gdr.getStat());
+                            break;
+                        default:
+                            throw new IOException("Invalid type of readOp");
+                        }
+                    } catch (KeeperException e) {
+                        subResult = new ErrorResult(e.code().intValue());
+                    }
+                    ((MultiResponse) rsp).add(subResult);
+                }
+                break;
+            }
+            case OpCode.create: {
+                lastOp = "CREA";
+                rsp = new CreateResponse(rc.path);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.create2:
+            case OpCode.createTTL:
+            case OpCode.createContainer: {
+                lastOp = "CREA";
+                rsp = new Create2Response(rc.path, rc.stat);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.delete:
+            case OpCode.deleteContainer: {
+                lastOp = "DELE";
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.setData: {
+                lastOp = "SETD";
+                rsp = new SetDataResponse(rc.stat);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.reconfig: {
+                lastOp = "RECO";
+                rsp = new GetDataResponse(
+                    ((QuorumZooKeeperServer) zks).self.getQuorumVerifier().toString().getBytes(),
+                    rc.stat);
+                err = Code.get(rc.err);
+                break;
+            }
+            case OpCode.setACL: {
+                lastOp = "SETA";
+                rsp = new SetACLResponse(rc.stat);
+                err = Code.get(rc.err);
+                requestPathMetricsCollector.registerRequest(request.type, rc.path);
+                break;
+            }
+            case OpCode.closeSession: {
+                lastOp = "CLOS";
+                err = Code.get(rc.err);
+                break;
+            }
+            case OpCode.sync: {
+                lastOp = "SYNC";
+                SyncRequest syncRequest = new SyncRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, syncRequest);
+                rsp = new SyncResponse(syncRequest.getPath());
+                requestPathMetricsCollector.registerRequest(request.type, syncRequest.getPath());
+                break;
+            }
+            case OpCode.check: {
+                lastOp = "CHEC";
+                rsp = new SetDataResponse(rc.stat);
+                err = Code.get(rc.err);
+                break;
+            }
+            case OpCode.exists: {
+                lastOp = "EXIS";
+                // TODO we need to figure out the security requirement for this!
+                ExistsRequest existsRequest = new ExistsRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, existsRequest);
+                path = existsRequest.getPath();
+                if (path.indexOf('\0') != -1) {
+                    throw new KeeperException.BadArgumentsException();
+                }
+                Stat stat = zks.getZKDatabase().statNode(path, existsRequest.getWatch() ? cnxn : null);
+                rsp = new ExistsResponse(stat);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.getData: {
+                lastOp = "GETD";
+                GetDataRequest getDataRequest = new GetDataRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getDataRequest);
+                path = getDataRequest.getPath();
+                rsp = handleGetDataRequest(getDataRequest, cnxn, request.authInfo);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.setWatches: {
+                lastOp = "SETW";
+                SetWatches setWatches = new SetWatches();
+                // TODO we really should not need this
+                request.request.rewind();
+                ByteBufferInputStream.byteBuffer2Record(request.request, setWatches);
+                long relativeZxid = setWatches.getRelativeZxid();
+                zks.getZKDatabase()
+                   .setWatches(
+                       relativeZxid,
+                       setWatches.getDataWatches(),
+                       setWatches.getExistWatches(),
+                       setWatches.getChildWatches(),
+                       Collections.emptyList(),
+                       Collections.emptyList(),
+                       cnxn);
+                break;
+            }
+            case OpCode.setWatches2: {
+                lastOp = "STW2";
+                SetWatches2 setWatches = new SetWatches2();
+                // TODO we really should not need this
+                request.request.rewind();
+                ByteBufferInputStream.byteBuffer2Record(request.request, setWatches);
+                long relativeZxid = setWatches.getRelativeZxid();
+                zks.getZKDatabase().setWatches(relativeZxid,
+                        setWatches.getDataWatches(),
+                        setWatches.getExistWatches(),
+                        setWatches.getChildWatches(),
+                        setWatches.getPersistentWatches(),
+                        setWatches.getPersistentRecursiveWatches(),
+                        cnxn);
+                break;
+            }
+            case OpCode.addWatch: {
+                lastOp = "ADDW";
+                AddWatchRequest addWatcherRequest = new AddWatchRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request,
+                        addWatcherRequest);
+                zks.getZKDatabase().addWatch(addWatcherRequest.getPath(), cnxn, addWatcherRequest.getMode());
+                rsp = new ErrorResponse(0);
+                break;
+            }
+            case OpCode.getACL: {
+                lastOp = "GETA";
+                GetACLRequest getACLRequest = new GetACLRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getACLRequest);
+                path = getACLRequest.getPath();
+                DataNode n = zks.getZKDatabase().getNode(path);
+                if (n == null) {
+                    throw new KeeperException.NoNodeException();
+                }
+                zks.checkACL(
+                    request.cnxn,
+                    zks.getZKDatabase().aclForNode(n),
+                    ZooDefs.Perms.READ | ZooDefs.Perms.ADMIN, request.authInfo, path,
+                    null);
+
+                Stat stat = new Stat();
+                List<ACL> acl = zks.getZKDatabase().getACL(path, stat);
+                requestPathMetricsCollector.registerRequest(request.type, getACLRequest.getPath());
+
+                try {
+                    zks.checkACL(
+                        request.cnxn,
+                        zks.getZKDatabase().aclForNode(n),
+                        ZooDefs.Perms.ADMIN,
+                        request.authInfo,
+                        path,
+                        null);
+                    rsp = new GetACLResponse(acl, stat);
+                } catch (KeeperException.NoAuthException e) {
+                    List<ACL> acl1 = new ArrayList<ACL>(acl.size());
+                    for (ACL a : acl) {
+                        if ("digest".equals(a.getId().getScheme())) {
+                            Id id = a.getId();
+                            Id id1 = new Id(id.getScheme(), id.getId().replaceAll(":.*", ":x"));
+                            acl1.add(new ACL(a.getPerms(), id1));
+                        } else {
+                            acl1.add(a);
+                        }
+                    }
+                    rsp = new GetACLResponse(acl1, stat);
+                }
+                break;
+            }
+            case OpCode.getChildren: {
+                lastOp = "GETC";
+                GetChildrenRequest getChildrenRequest = new GetChildrenRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getChildrenRequest);
+                path = getChildrenRequest.getPath();
+                rsp = handleGetChildrenRequest(getChildrenRequest, cnxn, request.authInfo);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.getAllChildrenNumber: {
+                lastOp = "GETACN";
+                GetAllChildrenNumberRequest getAllChildrenNumberRequest = new GetAllChildrenNumberRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getAllChildrenNumberRequest);
+                path = getAllChildrenNumberRequest.getPath();
+                DataNode n = zks.getZKDatabase().getNode(path);
+                if (n == null) {
+                    throw new KeeperException.NoNodeException();
+                }
+                zks.checkACL(
+                    request.cnxn,
+                    zks.getZKDatabase().aclForNode(n),
+                    ZooDefs.Perms.READ,
+                    request.authInfo,
+                    path,
+                    null);
+                int number = zks.getZKDatabase().getAllChildrenNumber(path);
+                rsp = new GetAllChildrenNumberResponse(number);
+                break;
+            }
+            case OpCode.getChildren2: {
+                lastOp = "GETC";
+                GetChildren2Request getChildren2Request = new GetChildren2Request();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getChildren2Request);
+                Stat stat = new Stat();
+                path = getChildren2Request.getPath();
+                DataNode n = zks.getZKDatabase().getNode(path);
+                if (n == null) {
+                    throw new KeeperException.NoNodeException();
+                }
+                zks.checkACL(
+                    request.cnxn,
+                    zks.getZKDatabase().aclForNode(n),
+                    ZooDefs.Perms.READ,
+                    request.authInfo, path,
+                    null);
+                List<String> children = zks.getZKDatabase()
+                                           .getChildren(path, stat, getChildren2Request.getWatch() ? cnxn : null);
+                rsp = new GetChildren2Response(children, stat);
+                requestPathMetricsCollector.registerRequest(request.type, path);
+                break;
+            }
+            case OpCode.checkWatches: {
+                lastOp = "CHKW";
+                CheckWatchesRequest checkWatches = new CheckWatchesRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, checkWatches);
+                WatcherType type = WatcherType.fromInt(checkWatches.getType());
+                path = checkWatches.getPath();
+                boolean containsWatcher = zks.getZKDatabase().containsWatcher(path, type, cnxn);
+                if (!containsWatcher) {
+                    String msg = String.format(Locale.ENGLISH, "%s (type: %s)", path, type);
+                    throw new KeeperException.NoWatcherException(msg);
+                }
+                requestPathMetricsCollector.registerRequest(request.type, checkWatches.getPath());
+                break;
+            }
+            case OpCode.removeWatches: {
+                lastOp = "REMW";
+                RemoveWatchesRequest removeWatches = new RemoveWatchesRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, removeWatches);
+                WatcherType type = WatcherType.fromInt(removeWatches.getType());
+                path = removeWatches.getPath();
+                boolean removed = zks.getZKDatabase().removeWatch(path, type, cnxn);
+                if (!removed) {
+                    String msg = String.format(Locale.ENGLISH, "%s (type: %s)", path, type);
+                    throw new KeeperException.NoWatcherException(msg);
+                }
+                requestPathMetricsCollector.registerRequest(request.type, removeWatches.getPath());
+                break;
+            }
+            case OpCode.getEphemerals: {
+                lastOp = "GETE";
+                GetEphemeralsRequest getEphemerals = new GetEphemeralsRequest();
+                ByteBufferInputStream.byteBuffer2Record(request.request, getEphemerals);
+                String prefixPath = getEphemerals.getPrefixPath();
+                Set<String> allEphems = zks.getZKDatabase().getDataTree().getEphemerals(request.sessionId);
+                List<String> ephemerals = new ArrayList<>();
+                if (StringUtils.isBlank(prefixPath) || "/".equals(prefixPath.trim())) {
+                    ephemerals.addAll(allEphems);
+                } else {
+                    for (String p : allEphems) {
+                        if (p.startsWith(prefixPath)) {
+                            ephemerals.add(p);
+                        }
+                    }
+                }
+                rsp = new GetEphemeralsResponse(ephemerals);
+                break;
+            }
+            }
+        } catch (SessionMovedException e) {
+            // session moved is a connection level error, we need to tear
+            // down the connection otw ZOOKEEPER-710 might happen
+            // ie client on slow follower starts to renew session, fails
+            // before this completes, then tries the fast follower (leader)
+            // and is successful, however the initial renew is then
+            // successfully fwd/processed by the leader and as a result
+            // the client and leader disagree on where the client is most
+            // recently attached (and therefore invalid SESSION MOVED generated)
+            cnxn.sendCloseSession();
+            return;
+        } catch (KeeperException e) {
+            err = e.code();
+        } catch (Exception e) {
+            // log at error level as we are returning a marshalling
+            // error to the user
+            LOG.error("Failed to process {}", request, e);
+            StringBuilder sb = new StringBuilder();
+            ByteBuffer bb = request.request;
+            bb.rewind();
+            while (bb.hasRemaining()) {
+                sb.append(Integer.toHexString(bb.get() & 0xff));
+            }
+            LOG.error("Dumping request buffer: 0x{}", sb.toString());
+            err = Code.MARSHALLINGERROR;
         }
 
-        private String getCommandJson(final HystrixCommandMetrics commandMetrics) throws IOException {
-            HystrixCommandKey key = commandMetrics.getCommandKey();
-            HystrixCircuitBreaker circuitBreaker = HystrixCircuitBreaker.Factory.getInstance(key);
+        ReplyHeader hdr = new ReplyHeader(request.cxid, lastZxid, err.intValue());
 
-            StringWriter jsonString = new StringWriter();
-            JsonGenerator json = jsonFactory.createGenerator(jsonString);
+        updateStats(request, lastOp, lastZxid);
 
-            json.writeStartObject();
-            json.writeStringField("type", "HystrixCommand");
-            json.writeStringField("name", key.name());
-            json.writeStringField("group", commandMetrics.getCommandGroup().name());
-            json.writeNumberField("currentTime", System.currentTimeMillis());
-
-            // circuit breaker
-            if (circuitBreaker == null) {
-                // circuit breaker is disabled and thus never open
-                json.writeBooleanField("isCircuitBreakerOpen", false);
+        try {
+            if (path == null || rsp == null) {
+                responseSize = cnxn.sendResponse(hdr, rsp, "response");
             } else {
-                json.writeBooleanField("isCircuitBreakerOpen", circuitBreaker.isOpen());
+                int opCode = request.type;
+                Stat stat = null;
+                // Serialized read and get children responses could be cached by the connection
+                // object. Cache entries are identified by their path and last modified zxid,
+                // so these values are passed along with the response.
+                switch (opCode) {
+                    case OpCode.getData : {
+                        GetDataResponse getDataResponse = (GetDataResponse) rsp;
+                        stat = getDataResponse.getStat();
+                        responseSize = cnxn.sendResponse(hdr, rsp, "response", path, stat, opCode);
+                        break;
+                    }
+                    case OpCode.getChildren2 : {
+                        GetChildren2Response getChildren2Response = (GetChildren2Response) rsp;
+                        stat = getChildren2Response.getStat();
+                        responseSize = cnxn.sendResponse(hdr, rsp, "response", path, stat, opCode);
+                        break;
+                    }
+                    default:
+                        responseSize = cnxn.sendResponse(hdr, rsp, "response");
+                }
             }
-            HealthCounts healthCounts = commandMetrics.getHealthCounts();
-            json.writeNumberField("errorPercentage", healthCounts.getErrorPercentage());
-            json.writeNumberField("errorCount", healthCounts.getErrorCount());
-            json.writeNumberField("requestCount", healthCounts.getTotalRequests());
 
-            // rolling counters
-            safelyWriteNumberField(json, "rollingCountBadRequests", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.BAD_REQUEST);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountCollapsedRequests", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.COLLAPSED);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountEmit", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.EMIT);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountExceptionsThrown", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.EXCEPTION_THROWN);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountFailure", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.FAILURE);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountFallbackEmit", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.FALLBACK_EMIT);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountFallbackFailure", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.FALLBACK_FAILURE);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountFallbackMissing", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.FALLBACK_MISSING);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountFallbackRejection", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.FALLBACK_REJECTION);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountFallbackSuccess", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.FALLBACK_SUCCESS);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountResponsesFromCache", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.RESPONSE_FROM_CACHE);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountSemaphoreRejected", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.SEMAPHORE_REJECTED);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountShortCircuited", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.SHORT_CIRCUITED);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountSuccess", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.SUCCESS);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountThreadPoolRejected", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.THREAD_POOL_REJECTED);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountTimeout", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return commandMetrics.getRollingCount(HystrixEventType.TIMEOUT);
-                }
-            });
-
-            json.writeNumberField("currentConcurrentExecutionCount", commandMetrics.getCurrentConcurrentExecutionCount());
-            json.writeNumberField("rollingMaxConcurrentExecutionCount", commandMetrics.getRollingMaxConcurrentExecutions());
-
-            // latency percentiles
-            json.writeNumberField("latencyExecute_mean", commandMetrics.getExecutionTimeMean());
-            json.writeObjectFieldStart("latencyExecute");
-            json.writeNumberField("0", commandMetrics.getExecutionTimePercentile(0));
-            json.writeNumberField("25", commandMetrics.getExecutionTimePercentile(25));
-            json.writeNumberField("50", commandMetrics.getExecutionTimePercentile(50));
-            json.writeNumberField("75", commandMetrics.getExecutionTimePercentile(75));
-            json.writeNumberField("90", commandMetrics.getExecutionTimePercentile(90));
-            json.writeNumberField("95", commandMetrics.getExecutionTimePercentile(95));
-            json.writeNumberField("99", commandMetrics.getExecutionTimePercentile(99));
-            json.writeNumberField("99.5", commandMetrics.getExecutionTimePercentile(99.5));
-            json.writeNumberField("100", commandMetrics.getExecutionTimePercentile(100));
-            json.writeEndObject();
-            //
-            json.writeNumberField("latencyTotal_mean", commandMetrics.getTotalTimeMean());
-            json.writeObjectFieldStart("latencyTotal");
-            json.writeNumberField("0", commandMetrics.getTotalTimePercentile(0));
-            json.writeNumberField("25", commandMetrics.getTotalTimePercentile(25));
-            json.writeNumberField("50", commandMetrics.getTotalTimePercentile(50));
-            json.writeNumberField("75", commandMetrics.getTotalTimePercentile(75));
-            json.writeNumberField("90", commandMetrics.getTotalTimePercentile(90));
-            json.writeNumberField("95", commandMetrics.getTotalTimePercentile(95));
-            json.writeNumberField("99", commandMetrics.getTotalTimePercentile(99));
-            json.writeNumberField("99.5", commandMetrics.getTotalTimePercentile(99.5));
-            json.writeNumberField("100", commandMetrics.getTotalTimePercentile(100));
-            json.writeEndObject();
-
-            // property values for reporting what is actually seen by the command rather than what was set somewhere
-            HystrixCommandProperties commandProperties = commandMetrics.getProperties();
-
-            json.writeNumberField("propertyValue_circuitBreakerRequestVolumeThreshold", commandProperties.circuitBreakerRequestVolumeThreshold().get());
-            json.writeNumberField("propertyValue_circuitBreakerSleepWindowInMilliseconds", commandProperties.circuitBreakerSleepWindowInMilliseconds().get());
-            json.writeNumberField("propertyValue_circuitBreakerErrorThresholdPercentage", commandProperties.circuitBreakerErrorThresholdPercentage().get());
-            json.writeBooleanField("propertyValue_circuitBreakerForceOpen", commandProperties.circuitBreakerForceOpen().get());
-            json.writeBooleanField("propertyValue_circuitBreakerForceClosed", commandProperties.circuitBreakerForceClosed().get());
-            json.writeBooleanField("propertyValue_circuitBreakerEnabled", commandProperties.circuitBreakerEnabled().get());
-
-            json.writeStringField("propertyValue_executionIsolationStrategy", commandProperties.executionIsolationStrategy().get().name());
-            json.writeNumberField("propertyValue_executionIsolationThreadTimeoutInMilliseconds", commandProperties.executionTimeoutInMilliseconds().get());
-            json.writeNumberField("propertyValue_executionTimeoutInMilliseconds", commandProperties.executionTimeoutInMilliseconds().get());
-            json.writeBooleanField("propertyValue_executionIsolationThreadInterruptOnTimeout", commandProperties.executionIsolationThreadInterruptOnTimeout().get());
-            json.writeStringField("propertyValue_executionIsolationThreadPoolKeyOverride", commandProperties.executionIsolationThreadPoolKeyOverride().get());
-            json.writeNumberField("propertyValue_executionIsolationSemaphoreMaxConcurrentRequests", commandProperties.executionIsolationSemaphoreMaxConcurrentRequests().get());
-            json.writeNumberField("propertyValue_fallbackIsolationSemaphoreMaxConcurrentRequests", commandProperties.fallbackIsolationSemaphoreMaxConcurrentRequests().get());
-
-                    /*
-                     * The following are commented out as these rarely change and are verbose for streaming for something people don't change.
-                     * We could perhaps allow a property or request argument to include these.
-                     */
-
-            //                    json.put("propertyValue_metricsRollingPercentileEnabled", commandProperties.metricsRollingPercentileEnabled().get());
-            //                    json.put("propertyValue_metricsRollingPercentileBucketSize", commandProperties.metricsRollingPercentileBucketSize().get());
-            //                    json.put("propertyValue_metricsRollingPercentileWindow", commandProperties.metricsRollingPercentileWindowInMilliseconds().get());
-            //                    json.put("propertyValue_metricsRollingPercentileWindowBuckets", commandProperties.metricsRollingPercentileWindowBuckets().get());
-            //                    json.put("propertyValue_metricsRollingStatisticalWindowBuckets", commandProperties.metricsRollingStatisticalWindowBuckets().get());
-            json.writeNumberField("propertyValue_metricsRollingStatisticalWindowInMilliseconds", commandProperties.metricsRollingStatisticalWindowInMilliseconds().get());
-
-            json.writeBooleanField("propertyValue_requestCacheEnabled", commandProperties.requestCacheEnabled().get());
-            json.writeBooleanField("propertyValue_requestLogEnabled", commandProperties.requestLogEnabled().get());
-
-            json.writeNumberField("reportingHosts", 1); // this will get summed across all instances in a cluster
-            json.writeStringField("threadPool", commandMetrics.getThreadPoolKey().name());
-
-            json.writeEndObject();
-            json.close();
-
-            return jsonString.getBuffer().toString();
-        }
-
-        private boolean hasExecutedCommandsOnThread(HystrixThreadPoolMetrics threadPoolMetrics) {
-            return threadPoolMetrics.getCurrentCompletedTaskCount().intValue() > 0;
-        }
-
-        private String getThreadPoolJson(final HystrixThreadPoolMetrics threadPoolMetrics) throws IOException {
-            HystrixThreadPoolKey key = threadPoolMetrics.getThreadPoolKey();
-            StringWriter jsonString = new StringWriter();
-            JsonGenerator json = jsonFactory.createJsonGenerator(jsonString);
-            json.writeStartObject();
-
-            json.writeStringField("type", "HystrixThreadPool");
-            json.writeStringField("name", key.name());
-            json.writeNumberField("currentTime", System.currentTimeMillis());
-
-            json.writeNumberField("currentActiveCount", threadPoolMetrics.getCurrentActiveCount().intValue());
-            json.writeNumberField("currentCompletedTaskCount", threadPoolMetrics.getCurrentCompletedTaskCount().longValue());
-            json.writeNumberField("currentCorePoolSize", threadPoolMetrics.getCurrentCorePoolSize().intValue());
-            json.writeNumberField("currentLargestPoolSize", threadPoolMetrics.getCurrentLargestPoolSize().intValue());
-            json.writeNumberField("currentMaximumPoolSize", threadPoolMetrics.getCurrentMaximumPoolSize().intValue());
-            json.writeNumberField("currentPoolSize", threadPoolMetrics.getCurrentPoolSize().intValue());
-            json.writeNumberField("currentQueueSize", threadPoolMetrics.getCurrentQueueSize().intValue());
-            json.writeNumberField("currentTaskCount", threadPoolMetrics.getCurrentTaskCount().longValue());
-            safelyWriteNumberField(json, "rollingCountThreadsExecuted", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return threadPoolMetrics.getRollingCount(HystrixEventType.ThreadPool.EXECUTED);
-                }
-            });
-            json.writeNumberField("rollingMaxActiveThreads", threadPoolMetrics.getRollingMaxActiveThreads());
-            safelyWriteNumberField(json, "rollingCountCommandRejections", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return threadPoolMetrics.getRollingCount(HystrixEventType.ThreadPool.REJECTED);
-                }
-            });
-
-            json.writeNumberField("propertyValue_queueSizeRejectionThreshold", threadPoolMetrics.getProperties().queueSizeRejectionThreshold().get());
-            json.writeNumberField("propertyValue_metricsRollingStatisticalWindowInMilliseconds", threadPoolMetrics.getProperties().metricsRollingStatisticalWindowInMilliseconds().get());
-
-            json.writeNumberField("reportingHosts", 1); // this will get summed across all instances in a cluster
-
-            json.writeEndObject();
-            json.close();
-
-            return jsonString.getBuffer().toString();
-        }
-
-        private String getCollapserJson(final HystrixCollapserMetrics collapserMetrics) throws IOException {
-            HystrixCollapserKey key = collapserMetrics.getCollapserKey();
-            StringWriter jsonString = new StringWriter();
-            JsonGenerator json = jsonFactory.createJsonGenerator(jsonString);
-            json.writeStartObject();
-
-            json.writeStringField("type", "HystrixCollapser");
-            json.writeStringField("name", key.name());
-            json.writeNumberField("currentTime", System.currentTimeMillis());
-
-            safelyWriteNumberField(json, "rollingCountRequestsBatched", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return collapserMetrics.getRollingCount(HystrixEventType.Collapser.ADDED_TO_BATCH);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountBatches", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return collapserMetrics.getRollingCount(HystrixEventType.Collapser.BATCH_EXECUTED);
-                }
-            });
-            safelyWriteNumberField(json, "rollingCountResponsesFromCache", new Func0<Long>() {
-                @Override
-                public Long call() {
-                    return collapserMetrics.getRollingCount(HystrixEventType.Collapser.RESPONSE_FROM_CACHE);
-                }
-            });
-
-            // batch size percentiles
-            json.writeNumberField("batchSize_mean", collapserMetrics.getBatchSizeMean());
-            json.writeObjectFieldStart("batchSize");
-            json.writeNumberField("25", collapserMetrics.getBatchSizePercentile(25));
-            json.writeNumberField("50", collapserMetrics.getBatchSizePercentile(50));
-            json.writeNumberField("75", collapserMetrics.getBatchSizePercentile(75));
-            json.writeNumberField("90", collapserMetrics.getBatchSizePercentile(90));
-            json.writeNumberField("95", collapserMetrics.getBatchSizePercentile(95));
-            json.writeNumberField("99", collapserMetrics.getBatchSizePercentile(99));
-            json.writeNumberField("99.5", collapserMetrics.getBatchSizePercentile(99.5));
-            json.writeNumberField("100", collapserMetrics.getBatchSizePercentile(100));
-            json.writeEndObject();
-
-            // shard size percentiles (commented-out for now)
-            //json.writeNumberField("shardSize_mean", collapserMetrics.getShardSizeMean());
-            //json.writeObjectFieldStart("shardSize");
-            //json.writeNumberField("25", collapserMetrics.getShardSizePercentile(25));
-            //json.writeNumberField("50", collapserMetrics.getShardSizePercentile(50));
-            //json.writeNumberField("75", collapserMetrics.getShardSizePercentile(75));
-            //json.writeNumberField("90", collapserMetrics.getShardSizePercentile(90));
-            //json.writeNumberField("95", collapserMetrics.getShardSizePercentile(95));
-            //json.writeNumberField("99", collapserMetrics.getShardSizePercentile(99));
-            //json.writeNumberField("99.5", collapserMetrics.getShardSizePercentile(99.5));
-            //json.writeNumberField("100", collapserMetrics.getShardSizePercentile(100));
-            //json.writeEndObject();
-
-            //json.writeNumberField("propertyValue_metricsRollingStatisticalWindowInMilliseconds", collapserMetrics.getProperties().metricsRollingStatisticalWindowInMilliseconds().get());
-            json.writeBooleanField("propertyValue_requestCacheEnabled", collapserMetrics.getProperties().requestCacheEnabled().get());
-            json.writeNumberField("propertyValue_maxRequestsInBatch", collapserMetrics.getProperties().maxRequestsInBatch().get());
-            json.writeNumberField("propertyValue_timerDelayInMilliseconds", collapserMetrics.getProperties().timerDelayInMilliseconds().get());
-
-            json.writeNumberField("reportingHosts", 1); // this will get summed across all instances in a cluster
-
-            json.writeEndObject();
-            json.close();
-
-            return jsonString.getBuffer().toString();
+            if (request.type == OpCode.closeSession) {
+                cnxn.sendCloseSession();
+            }
+        } catch (IOException e) {
+            LOG.error("FIXMSG", e);
+        } finally {
+            ServerMetrics.getMetrics().RESPONSE_BYTES.add(responseSize);
         }
     }
 
-    private static class MetricsPollerThreadFactory implements ThreadFactory {
-        private static final String MetricsThreadName = "HystrixMetricPoller";
-
-        private final ThreadFactory defaultFactory = Executors.defaultThreadFactory();
-
-        public Thread newThread(Runnable r) {
-            Thread thread = defaultFactory.newThread(r);
-            thread.setName(MetricsThreadName);
-            thread.setDaemon(true);
-            return thread;
+    private Record handleGetChildrenRequest(Record request, ServerCnxn cnxn, List<Id> authInfo) throws KeeperException, IOException {
+        GetChildrenRequest getChildrenRequest = (GetChildrenRequest) request;
+        String path = getChildrenRequest.getPath();
+        DataNode n = zks.getZKDatabase().getNode(path);
+        if (n == null) {
+            throw new KeeperException.NoNodeException();
         }
+        zks.checkACL(cnxn, zks.getZKDatabase().aclForNode(n), ZooDefs.Perms.READ, authInfo, path, null);
+        List<String> children = zks.getZKDatabase()
+                                   .getChildren(path, null, getChildrenRequest.getWatch() ? cnxn : null);
+        return new GetChildrenResponse(children);
     }
+
+    private Record handleGetDataRequest(Record request, ServerCnxn cnxn, List<Id> authInfo) throws KeeperException, IOException {
+        GetDataRequest getDataRequest = (GetDataRequest) request;
+        String path = getDataRequest.getPath();
+        DataNode n = zks.getZKDatabase().getNode(path);
+        if (n == null) {
+            throw new KeeperException.NoNodeException();
+        }
+        zks.checkACL(cnxn, zks.getZKDatabase().aclForNode(n), ZooDefs.Perms.READ, authInfo, path, null);
+        Stat stat = new Stat();
+        byte[] b = zks.getZKDatabase().getData(path, stat, getDataRequest.getWatch() ? cnxn : null);
+        return new GetDataResponse(b, stat);
+    }
+
+    private boolean closeSession(ServerCnxnFactory serverCnxnFactory, long sessionId) {
+        if (serverCnxnFactory == null) {
+            return false;
+        }
+        return serverCnxnFactory.closeSession(sessionId, ServerCnxn.DisconnectReason.CLIENT_CLOSED_SESSION);
+    }
+
+    private boolean connClosedByClient(Request request) {
+        return request.cnxn == null;
+    }
+
+    public void shutdown() {
+        // we are the final link in the chain
+        LOG.info("shutdown of request processor complete");
+    }
+
+    private void updateStats(Request request, String lastOp, long lastZxid) {
+        if (request.cnxn == null) {
+            return;
+        }
+        long currentTime = Time.currentElapsedTime();
+        zks.serverStats().updateLatency(request, currentTime);
+        request.cnxn.updateStatsForResponse(request.cxid, lastZxid, lastOp, request.createTime, currentTime);
+    }
+
 }

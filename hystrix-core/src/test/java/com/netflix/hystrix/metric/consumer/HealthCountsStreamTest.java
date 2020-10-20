@@ -470,6 +470,242 @@ public class HealthCountsStreamTest extends CommandStreamTest {
         assertEquals(0L, stream.getLatest().getErrorCount());
         assertEquals(0L, stream.getLatest().getTotalRequests());
     }
+	
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+	
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
+
+    @Test
+    public void testMultipleEventsOverTimeGetStoredAndAgeOut() {
+        HystrixCommandKey key = HystrixCommandKey.Factory.asKey("CMD-Health-M");
+        stream = HealthCountsStream.getInstance(key, 10, 100);
+
+        //by doing a take(30), we ensure that all rolling counts go back to 0
+
+        final CountDownLatch latch = new CountDownLatch(1);
+        stream.observe().take(30).subscribe(getSubscriber(latch));
+
+        CommandStreamTest.Command cmd1 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.SUCCESS, 20);
+        CommandStreamTest.Command cmd2 = CommandStreamTest.Command.from(groupKey, key, HystrixEventType.FAILURE, 10);
+
+        cmd1.observe();
+        cmd2.observe();
+
+        try {
+            assertTrue(latch.await(10000, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException ex) {
+            fail("Interrupted ex");
+        }
+        System.out.println("ReqLog : " + HystrixRequestLog.getCurrentRequest().getExecutedCommandsAsString());
+        assertEquals(0L, stream.getLatest().getErrorCount());
+        assertEquals(0L, stream.getLatest().getTotalRequests());
+    }
 
     @Test
     public void testSharedSourceStream() throws InterruptedException {

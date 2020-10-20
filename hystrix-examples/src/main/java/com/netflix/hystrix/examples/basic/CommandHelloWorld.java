@@ -45,6 +45,36 @@ public class CommandHelloWorld extends HystrixCommand<String> {
         return "Hello " + name + "!";
     }
 
+    @Override
+    protected String run() {
+        return "Hello " + name + "!";
+    }
+
+
+    @Override
+    protected String run() {
+        return "Hello " + name + "!";
+    }
+
+
+    @Override
+    protected String run() {
+        return "Hello " + name + "!";
+    }
+
+
+    @Override
+    protected String run() {
+        return "Hello " + name + "!";
+    }
+
+
+    @Override
+    protected String run() {
+        return "Hello " + name + "!";
+    }
+
+
     public static class UnitTest {
 
         @Test
@@ -104,6 +134,21 @@ public class CommandHelloWorld extends HystrixCommand<String> {
             // - also verbose anonymous inner-class
             // - ignore errors and onCompleted signal
             fBob.subscribe(new Action1<String>() {
+
+                @Override
+                public void call(String v) {
+                    System.out.println("onNext: " + v);
+                }
+
+                @Override
+                public void call(String v) {
+                    System.out.println("onNext: " + v);
+                }
+
+                @Override
+                public void call(String v) {
+                    System.out.println("onNext: " + v);
+                }
 
                 @Override
                 public void call(String v) {

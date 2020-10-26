@@ -126,7 +126,7 @@ public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArg
         }
 
         HystrixCollapserProperties properties = HystrixPropertiesFactory.getCollapserProperties(collapserKey, propertiesBuilder);
-        this.collapserFactory = new RequestCollapserFactory<BatchReturnType, ResponseType, RequestArgumentType>(collapserKey, scope, timer, properties);
+        this.collapserFactory = new RequestCollapserFactory<BatchReturnType, ResponseT, RequestArgumentType>(collapserKey, scope, timer, properties);
         this.requestCache = HystrixRequestCache.getInstance(collapserKey, HystrixPlugins.getInstance().getConcurrencyStrategy());
 
         if (metrics == null) {
@@ -135,7 +135,7 @@ public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArg
             this.metrics = metrics;
         }
 
-        final HystrixCollapser<BatchReturnType, ResponseType, RequestArgumentType> self = this;
+        final HystrixCollapser<BatchReturnType, ResponseT, RequestArgumentType> self = this;
 
          /* strategy: HystrixMetricsPublisherCollapser */
         HystrixMetricsPublisherFactory.createOrRetrievePublisherForCollapser(collapserKey, this.metrics, properties);
@@ -143,17 +143,17 @@ public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArg
         /**
          * Used to pass public method invocation to the underlying implementation in a separate package while leaving the methods 'protected' in this class.
          */
-        collapserInstanceWrapper = new HystrixCollapserBridge<BatchReturnType, ResponseType, RequestArgumentType>() {
+        collapserInstanceWrapper = new HystrixCollapserBridge<BatchReturnType, ResponseT, RequestArgumentType>() {
 
             @Override
-            public Collection<Collection<CollapsedRequest<ResponseType, RequestArgumentType>>> shardRequests(Collection<CollapsedRequest<ResponseType, RequestArgumentType>> requests) {
-                Collection<Collection<CollapsedRequest<ResponseType, RequestArgumentType>>> shards = self.shardRequests(requests);
+            public Collection<Collection<CollapsedRequest<ResponseT, RequestArgumentType>>> shardRequests(Collection<CollapsedRequest<ResponseT, RequestArgumentType>> requests) {
+                Collection<Collection<CollapsedRequest<ResponseT, RequestArgumentType>>> shards = self.shardRequests(requests);
                 self.metrics.markShards(shards.size());
                 return shards;
             }
 
             @Override
-            public Observable<BatchReturnType> createObservableCommand(Collection<CollapsedRequest<ResponseType, RequestArgumentType>> requests) {
+            public Observable<BatchReturnType> createObservableCommand(Collection<CollapsedRequest<ResponseT, RequestArgumentType>> requests) {
                 final HystrixCommand<BatchReturnType> command = self.createCommand(requests);
 
                 command.markAsCollapsedCommand(this.getCollapserKey(), requests.size());
@@ -163,7 +163,7 @@ public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArg
             }
 
             @Override
-            public Observable<Void> mapResponseToRequests(Observable<BatchReturnType> batchResponse, final Collection<CollapsedRequest<ResponseType, RequestArgumentType>> requests) {
+            public Observable<Void> mapResponseToRequests(Observable<BatchReturnType> batchResponse, final Collection<CollapsedRequest<ResponseT, RequestArgumentType>> requests) {
                 return batchResponse.single().doOnNext(new Action1<BatchReturnType>() {
                     @Override
                     public void call(BatchReturnType batchReturnType) {
@@ -399,7 +399,7 @@ public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArg
 
                 if (isRequestCacheEnabled && cacheKey != null) {
                     HystrixCachedObservable<ResponseType> toCache = HystrixCachedObservable.from(response);
-                    HystrixCachedObservable<ResponseType> fromCache = requestCache.putIfAbsent(cacheKey, toCache);
+                    HystrixCachedObservable<ResponseT> fromCache = requestCache.putIfAbsent(cacheKey, toCache);
                     if (fromCache == null) {
                         return toCache.toObservable();
                     } else {
@@ -423,7 +423,7 @@ public abstract class HystrixCollapser<BatchReturnType, ResponseType, RequestArg
      * @throws HystrixRuntimeException
      *             if an error occurs and a fallback cannot be retrieved
      */
-    public ResponseType execute() {
+    public ResponseT execute() {
         try {
             return queue().get();
         } catch (Throwable e) {

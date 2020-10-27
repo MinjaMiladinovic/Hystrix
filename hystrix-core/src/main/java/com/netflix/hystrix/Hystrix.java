@@ -29,7 +29,7 @@ import rx.functions.Action0;
 /**
  * Lifecycle management of Hystrix.
  */
-public class Hystrix {
+public class Hystrixttestrename {
 
     private static final Logger logger = LoggerFactory.getLogger(Hystrix.class);
 

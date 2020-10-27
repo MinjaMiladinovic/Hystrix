@@ -278,7 +278,7 @@ public class HystrixCommandMetrics extends HystrixMetrics {
      * 
      * @return int time in milliseconds
      */
-    public int getExecutionTimeMean() {
+    public int getExTimes() {
         return rollingCommandLatencyDistributionStream.getLatestMean();
     }
 

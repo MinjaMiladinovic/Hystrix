@@ -48,17 +48,17 @@ public class HystrixCommandMetrics extends HystrixMetrics {
 
     public static final Func2<long[], HystrixCommandCompletion, long[]> appendEventToBucket = new Func2<long[], HystrixCommandCompletion, long[]>() {
         @Override
-        public long[] call(long[] initialCountArray, HystrixCommandCompletion execution) {
+        public long[] call(long[] initialcarr, HystrixCommandCompletion execution) {
             ExecutionResult.EventCounts eventCounts = execution.getEventCounts();
             for (HystrixEventType eventType: ALL_EVENT_TYPES) {
                 switch (eventType) {
                     case EXCEPTION_THROWN: break; //this is just a sum of other anyway - don't do the work here
                     default:
-                        initialCountArray[eventType.ordinal()] += eventCounts.getCount(eventType);
+                        initialcarr[eventType.ordinal()] += eventCounts.getCount(eventType);
                         break;
                 }
             }
-            return initialCountArray;
+            return initialcarr;
         }
     };
 

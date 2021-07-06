@@ -43,6 +43,62 @@ abstract public class TestHystrixCommand<T> extends HystrixCommand<T> implements
         return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
     }
 
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
+    static TestCommandBuilder testPropsBuilder() {
+        return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
+    }
+
     static TestCommandBuilder testPropsBuilder(HystrixCircuitBreakerTest.TestCircuitBreaker circuitBreaker) {
         return new TestCommandBuilder(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD).setCircuitBreaker(circuitBreaker);
     }

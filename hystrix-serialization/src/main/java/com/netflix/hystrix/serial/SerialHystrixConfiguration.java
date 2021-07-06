@@ -40,6 +40,156 @@ public class SerialHystrixConfiguration extends SerialHystrixMetric {
         throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
     }
 
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static byte[] toBytes(HystrixConfiguration config) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
     public static String toJsonString(HystrixConfiguration config) {
         StringWriter jsonString = new StringWriter();
 
@@ -94,6 +244,78 @@ public class SerialHystrixConfiguration extends SerialHystrixMetric {
     public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
         throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
     }
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
+
+    @Deprecated
+    public static HystrixConfiguration fromByteBuffer(ByteBuffer bb) {
+        throw new UnsupportedOperationException("Not implemented anymore.  Will be implemented in a new class shortly");
+    }
+
 
     private static void writeCommandConfigJson(JsonGenerator json, HystrixCommandKey key, HystrixCommandConfiguration commandConfig) throws IOException {
         json.writeObjectFieldStart(key.name());

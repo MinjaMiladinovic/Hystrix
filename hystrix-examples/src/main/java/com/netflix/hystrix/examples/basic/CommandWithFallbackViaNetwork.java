@@ -47,6 +47,42 @@ public class CommandWithFallbackViaNetwork extends HystrixCommand<String> {
         this.id = id;
     }
 
+    protected CommandWithFallbackViaNetwork(int id) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceX"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueCommand")));
+        this.id = id;
+    }
+
+    protected CommandWithFallbackViaNetwork(int id) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceX"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueCommand")));
+        this.id = id;
+    }
+
+    protected CommandWithFallbackViaNetwork(int id) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceX"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueCommand")));
+        this.id = id;
+    }
+
+    protected CommandWithFallbackViaNetwork(int id) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceX"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueCommand")));
+        this.id = id;
+    }
+
+    protected CommandWithFallbackViaNetwork(int id) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceX"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueCommand")));
+        this.id = id;
+    }
+
+    protected CommandWithFallbackViaNetwork(int id) {
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceX"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("GetValueCommand")));
+        this.id = id;
+    }
+
     @Override
     protected String run() {
         //        RemoteServiceXClient.getValue(id);
@@ -78,6 +114,54 @@ public class CommandWithFallbackViaNetwork extends HystrixCommand<String> {
         }
 
         @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
+        protected String run() {
+            //            MemCacheClient.getValue(id);
+            throw new RuntimeException("the fallback also failed");
+        }
+
+        @Override
         protected String getFallback() {
             // the fallback also failed
             // so this fallback-of-a-fallback will 
@@ -89,6 +173,118 @@ public class CommandWithFallbackViaNetwork extends HystrixCommand<String> {
     public static class UnitTest {
 
         @Test
+        public void test() {
+            HystrixRequestContext context = HystrixRequestContext.initializeContext();
+            try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+            } finally {
+                context.shutdown();
+            }
+        } @Test
+        public void test() {
+            HystrixRequestContext context = HystrixRequestContext.initializeContext();
+            try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+            } finally {
+                context.shutdown();
+            }
+        } @Test
+        public void test() {
+            HystrixRequestContext context = HystrixRequestContext.initializeContext();
+            try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+            } finally {
+                context.shutdown();
+            }
+        } @Test
+        public void test() {
+            HystrixRequestContext context = HystrixRequestContext.initializeContext();
+            try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+            } finally {
+                context.shutdown();
+            }
+        } @Test
+        public void test() {
+            HystrixRequestContext context = HystrixRequestContext.initializeContext();
+            try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+            } finally {
+                context.shutdown();
+            }
+        } @Test
+        public void test() {
+            HystrixRequestContext context = HystrixRequestContext.initializeContext();
+            try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+            } finally {
+                context.shutdown();
+            }
+        } @Test
+        public void test() {
+            HystrixRequestContext context = HystrixRequestContext.initializeContext();
+            try {
+                assertEquals(null, new CommandWithFallbackViaNetwork(1).execute());
+
+                HystrixInvokableInfo<?> command1 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[0];
+                assertEquals("GetValueCommand", command1.getCommandKey().name());
+                assertTrue(command1.getExecutionEvents().contains(HystrixEventType.FAILURE));
+
+                HystrixInvokableInfo<?> command2 = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixInvokableInfo<?>[2])[1];
+                assertEquals("GetValueFallbackCommand", command2.getCommandKey().name());
+                assertTrue(command2.getExecutionEvents().contains(HystrixEventType.FAILURE));
+            } finally {
+                context.shutdown();
+            }
+        } @Test
         public void test() {
             HystrixRequestContext context = HystrixRequestContext.initializeContext();
             try {

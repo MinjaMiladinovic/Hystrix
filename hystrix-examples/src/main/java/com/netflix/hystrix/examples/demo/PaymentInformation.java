@@ -32,12 +32,296 @@ public class PaymentInformation {
         this.expirationYear = expirationYear;
     }
 
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
+
+    public PaymentInformation(UserAccount user, String creditCardNumber, int expirationMonth, int expirationYear) {
+        this.user = user;
+        this.creditCardNumber = creditCardNumber;
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+    }
     public String getCreditCardNumber() {
         return creditCardNumber;
     }
 
     public int getExpirationMonth() {
         return expirationMonth;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
+    }
+
+    public int getExpirationYear() {
+        return expirationYear;
     }
 
     public int getExpirationYear() {

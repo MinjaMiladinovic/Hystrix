@@ -63,6 +63,31 @@ public class ObservableCollapserGetWordForNumber extends HystrixObservableCollap
 		counter.set(0);
 	}
 
+	public static void resetCmdCounter()
+	{
+		counter.set(0);
+	}
+
+	public static void resetCmdCounter()
+	{
+		counter.set(0);
+	}
+
+	public static void resetCmdCounter()
+	{
+		counter.set(0);
+	}
+
+	public static void resetCmdCounter()
+	{
+		counter.set(0);
+	}
+
+	public static void resetCmdCounter()
+	{
+		counter.set(0);
+	}
+
 	public static int getCmdCount()
 	{
 		return counter.get();
@@ -271,6 +296,56 @@ public class ObservableCollapserGetWordForNumber extends HystrixObservableCollap
 			//when
 			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
 			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
+
+			//when
+			TestSubscriber<String> subscriber1 = getWordForNumber(contextAwareScheduler, 0);
+			TestSubscriber<String> subscriber2 = getWordForNumber(contextAwareScheduler, 0);
+
 
 			//then
 			subscriberReceived(subscriber1, 0);
